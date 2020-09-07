@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    
+    {% if search_result.Response%}
+        This '{{searchValue}}' currency does not exist, please check again.
+    {% endif %}
+    {% for key, value in search_result.DISPLAY.items %}
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+            <h5 class="display-4 text-algin-center">{{key}}</h5>
+            <strong>Price: </strong>{{value.USD.PRICE}}
+            <br>
+            <strong>Daily High: </strong>{{value.USD.HIGHDAY}}
+            <br>
+            <strong>Daily Low: </strong>{{value.USD.LOWDAY}}
+            <br>
+            <strong>Market Cap: </strong>{{value.USD.MKTCAP}}
+            </div>
+        </div>
+    {% endfor %}
+{% endblock content %}
+    
